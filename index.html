@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Random Sens Generator</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #1e1e1e;
+            color: white;
+            font-family: Arial, sans-serif;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            user-select: none;
+        }
+        #container {
+            width: 100%;
+        }
+        #sensValue {
+            font-size: 4rem;
+            font-weight: bold;
+        }
+        #info {
+            font-size: 1.2rem;
+            opacity: 0.6;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body onclick="generateSens()">
+    <div id="container">
+        <div id="sensValue">Toca para iniciar</div>
+        <div id="info">Generador entre mitad y el doble de tu sens</div>
+    </div>
+
+    <script>
+        let baseSens = 0.187; // <-- CAMBIAR ESTA SENS A LA TUYA
+
+        function enterFullscreen() {
+            let el = document.documentElement;
+            if (el.requestFullscreen) el.requestFullscreen();
+        }
+
+        function generateSens() {
+            enterFullscreen();
+            let minSens = baseSens / 2;
+            let maxSens = baseSens * 2;
+            let randomSens = Math.random() * (maxSens - minSens) + minSens;
+            document.getElementById("sensValue").innerText = randomSens.toFixed(3);
+        }
+    </script>
+</body>
+</html>
