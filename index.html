@@ -53,6 +53,19 @@
             let randomSens = Math.random() * (maxSens - minSens) + minSens;
             document.getElementById("sensValue").innerText = randomSens.toFixed(3);
         }
-    </script>
+    // Mantener la pantalla encendida con Wake Lock API
+let wakeLock = null;
+async function keepAwake() {
+    try {
+        wakeLock = await navigator.wakeLock.request('screen');
+    } catch (e) {
+        console.log('Wake Lock no disponible:', e);
+    }
+}
+
+// Activar al tocar
+window.addEventListener('click', keepAwake);
+
+</script>
 </body>
 </html>
